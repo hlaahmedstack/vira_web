@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تطبيق ViraCheck</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, #e6e6fa, #ffffff);
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      color: #333;
+    }
+
+    .top-bar {
+      background-color: #4b0082;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    header {
+      background-color: #6a0dad;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      letter-spacing: 1px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero img {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .hero h2 {
+      font-size: 1.8em;
+      color: #6a0dad;
+    }
+
+    .description {
+      padding: 20px 40px;
+      max-width: 900px;
+      margin: auto;
+      line-height: 2;
+    }
+
+    .short-desc {
+      background-color: #f9f9f9;
+      padding: 20px 40px;
+      border-top: 3px solid #6a0dad;
+      font-size: 1.2em;
+      text-align: center;
+      color: #555;
+    }
+
+    .analyzer {
+      text-align: center;
+      padding: 40px;
+    }
+
+    .analyzer button {
+      padding: 10px 20px;
+      background-color: #6a0dad;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    footer {
+      background-color: #6a0dad;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      font-size: 1em;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 600px) {
+      .description, .short-desc {
+        padding: 15px;
+      }
+
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      .hero h2 {
+        font-size: 1.4em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- الشريط العلوي -->
+  <div class="top-bar">
+    مارينا فرج نعيم
+  </div>
+
+  <header>
+    <h1>تطبيق ViraCheck</h1>
+  </header>
+
+  <section class="hero">
+    <img src="viracheck_logo.png.jpg" alt="شعار التطبيق">
+    <h2>أداة ذكية لتشخيص الجدري المائي</h2>
+  </section>
+
+  <section class="description">
+    <h3>عن المرض:</h3>
+    <p>
+      الجدري المائي هو مرض فيروسي معدي يُصيب الأطفال والبالغين، ويتميز بظهور طفح جلدي على هيئة بثور مائية. 
+      ينتقل الفيروس عن طريق الرذاذ أو التلامس المباشر، وقد يسبب حكة شديدة وارتفاع في درجة الحرارة. 
+      التشخيص المبكر للحالة يُساهم في تقليل العدوى وتسريع العلاج. 
+      تطبيق <strong>ViraCheck</strong> يساعد في التعرف على الأعراض من خلال تحليل الصور باستخدام الذكاء الاصطناعي، 
+      ويُقدم نتيجة مبدئية للحالة مما يسهل عملية التشخيص والانتقال للطبيب في الوقت المناسب.
+    </p>
+  </section>
+
+  <section class="short-desc">
+    <p>تطبيق ذكي لتحليل الصور وتشخيص احتمالية الإصابة بالجدري المائي باستخدام الذكاء الاصطناعي.</p>
+  </section>
+
+  <section class="analyzer">
+    <h2>جرب تشخيص حالتك الآن</h2>
+    <input type="file" id="imageInput" accept="image/*" style="margin: 20px auto; display:block;" />
+    <button onclick="analyzeImage()">تحليل الصورة</button>
+    <p id="resultMessage" style="margin-top: 20px; font-size: 1.2em; color: #333;"></p>
+  </section>
+
+  <footer>
+    تصميم وتطوير: حلا أحمد ©
+  </footer>
+
+  <script>
+    function analyzeImage() {
+      const input = document.getElementById('imageInput');
+      const result = document.getElementById('resultMessage');
+
+      if (!input.files || input.files.length === 0) {
+        result.innerText = 'من فضلك اختر صورة أولاً.';
+        result.style.color = 'red';
+        return;
+      }
+
+      const fakeResults = [
+        "لا توجد أعراض واضحة للجدري المائي.",
+        "يبدو أن هناك علامات خفيفة للإصابة بالجدري المائي.",
+        "احتمالية إصابة متقدمة، يُفضل مراجعة الطبيب فورًا."
+      ];
+
+      const randomIndex = Math.floor(Math.random() * fakeResults.length);
+      result.innerText = fakeResults[randomIndex];
+      result.style.color = '#6a0dad';
+    }
+  </script>
+
+</body>
+</html>
